@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:/data/giri
+    driver-class-name: org.h2.Driver
+    username: giridb
+    password: KG
+  jpa:
+    show-sql: on
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: on
+      settings:
+        trace: off
+        web-allow-others: true
+      path: /db-console

@@ -1,0 +1,31 @@
+#Spring related properties
+spring:
+  application:
+    name: employee-management
+
+#Server configs
+server:
+  port: 8090
+  servlet:
+    context-path: "/api"
+  error:
+    path: /error
+     #We can disable the default /error white labeled
+    whitelabel:
+      enabled: on
+
+#Actuator Management configs
+management:
+  endpoint:
+    shutdown:
+      #this should be added if we want to stop our application
+      access: unrestricted
+  endpoints:
+    web:
+      exposure:
+        include: "health, shutdown, beans, mappings"
+      #we can customize base path of actuator
+      base-path: /management
+  server:
+    port: 8085
+
