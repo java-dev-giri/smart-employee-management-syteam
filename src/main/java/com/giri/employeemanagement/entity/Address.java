@@ -8,7 +8,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private int pinCode;
 
@@ -20,11 +20,11 @@ public class Address {
 
     private String type;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -70,13 +70,15 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", pinCode=" + pinCode +
-                ", state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                ", area='" + area + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        return """
+                    Address {
+                        "id" : %d
+                        "pinCode" : %d
+                        "state" : %s
+                        "city" : %s
+                        "area" : %s
+                        "type" : %s
+                    }
+                """.formatted(id, pinCode, state, city, area, type);
     }
 }

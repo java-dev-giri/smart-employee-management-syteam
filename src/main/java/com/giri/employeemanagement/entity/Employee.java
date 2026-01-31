@@ -2,6 +2,8 @@ package com.giri.employeemanagement.entity;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,6 +21,7 @@ public class Employee {
     @Column(length = 15)
     private String empLastName;
 
+    @Column(unique = true)
     private String empId;
 
     private String empDept;
@@ -27,10 +30,13 @@ public class Employee {
 
     private String empPersonalMailId;
 
-    private String empMailId;
+    private String empWorkMailId;
 
+    @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     private LocalDateTime modifiedAt;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -93,12 +99,12 @@ public class Employee {
         this.empPersonalMailId = empPersonalMailId;
     }
 
-    public String getEmpMailId() {
-        return empMailId;
+    public String getEmpWorkMailId() {
+        return empWorkMailId;
     }
 
-    public void setEmpMailId(String empMailId) {
-        this.empMailId = empMailId;
+    public void setEmpWorkMailId(String empMailId) {
+        this.empWorkMailId = empMailId;
     }
 
     public Address getEmpAddress() {
@@ -127,18 +133,22 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", empFirstName='" + empFirstName + '\'' +
-                ", empLastName='" + empLastName + '\'' +
-                ", empId='" + empId + '\'' +
-                ", empDept='" + empDept + '\'' +
-                ", empDOJ=" + empDOJ +
-                ", empPersonalMailId='" + empPersonalMailId + '\'' +
-                ", empMailId='" + empMailId + '\'' +
-                ", createdAt=" + createdAt +
-                ", modifiedAt=" + modifiedAt +
-                ", empAddress=" + empAddress +
-                '}';
+        return """
+                    Employee {
+                        "id" : %d
+                        "empFirstName" : %s
+                        "empLastName" : %s
+                        "empId" : %s
+                        "empDept" : %s
+                        "empDOJ" : %s
+                        "empPersonalMailId" : %s
+                        "empMailId" : %s
+                        "createdAt" : %s
+                        "modifiedAt" : %s
+                        "empAddress" : %s
+                    }
+                """.formatted(id, empFirstName, empLastName, empId,
+                empDept, empDOJ, empPersonalMailId, empWorkMailId, createdAt,
+                modifiedAt, empAddress);
     }
 }

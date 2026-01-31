@@ -1,0 +1,272 @@
+{
+  "info": {
+    "_postman_id": "ce461fc7-beb1-4e64-9aad-59aaaba7e529",
+    "name": "Employee Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51098236",
+    "_collection_link": "https://go.postman.co/collection/51098236-ce461fc7-beb1-4e64-9aad-59aaaba7e529?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Actuator",
+      "item": [
+        {
+          "name": "Check application health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{actuator}}/management/health",
+              "host": [
+                "{{actuator}}"
+              ],
+              "path": [
+                "management",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all actuators endpoints",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{actuator}}/management",
+              "host": [
+                "{{actuator}}"
+              ],
+              "path": [
+                "management"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all mappings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{actuator}}/management/mappings",
+              "host": [
+                "{{actuator}}"
+              ],
+              "path": [
+                "management",
+                "mappings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all beans",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{actuator}}/management/beans",
+              "host": [
+                "{{actuator}}"
+              ],
+              "path": [
+                "management",
+                "beans"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Stop application",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{actuator}}/management/shutdown",
+              "host": [
+                "{{actuator}}"
+              ],
+              "path": [
+                "management",
+                "shutdown"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Employee",
+      "item": [
+        {
+          "name": "Get all employees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{empApp}}/api/v1/employees",
+              "host": [
+                "{{empApp}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get employee by empId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{empApp}}/api/v1/employee/GIRI001",
+              "host": [
+                "{{empApp}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "employee",
+                "GIRI001"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add employee",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"empFirstName\": \"John\",\r\n  \"empLastName\": \"Doe\",\r\n  \"empId\": \"GIRI002\",\r\n  \"empDept\": \"SE II\",\r\n  \"empDOJ\": \"2026-01-15\",\r\n  \"empAddress\": {\r\n    \"type\": \"Home\",\r\n    \"area\": \"123 Main Street\",\r\n    \"city\": \"San Francisco\",\r\n    \"state\": \"CA\",\r\n    \"pinCode\": \"94105\"\r\n  },\r\n  \"empPersonalMailId\": \"john.doe@personal.com\",\r\n  \"empWorkMailId\": \"john.doe@giri.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{empApp}}/api/v1/employee",
+              "host": [
+                "{{empApp}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "employee"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update employee basic details",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"empFirstName\": \"John B\",\r\n  \"empLastName\": \"Doe\",\r\n  \"empId\": \"GIRI002\",\r\n  \"empDept\": \"SE III\",\r\n  \"empDOJ\": \"2026-01-15\",\r\n  \"empPersonalMailId\": \"john.doe@personal.com\",\r\n  \"empWorkMailId\": \"johnb.doe@giri.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{empApp}}/api/v1/employee/GIRI002",
+              "host": [
+                "{{empApp}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "employee",
+                "GIRI002"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update employee address",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"type\": \"New Home\",\r\n    \"area\": \"321 Main Street\",\r\n    \"city\": \"nas Francisco\",\r\n    \"state\": \"AC\",\r\n    \"pinCode\": \"50194\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{empApp}}/api/v1/employee/GIRI002",
+              "host": [
+                "{{empApp}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "employee",
+                "GIRI002"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete employee",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{empApp}}/api/v1/employee/GIRI002",
+              "host": [
+                "{{empApp}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "employee",
+                "GIRI002"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "actuator",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "EMPAPP",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "empApp",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

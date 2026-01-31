@@ -1,11 +1,11 @@
 spring:
   datasource:
-    url: jdbc:h2:file:/data/giri
+    url: jdbc:h2:file:./data/file
     driver-class-name: org.h2.Driver
     username: giridb
     password: KG
   jpa:
-    show-sql: on
+    show-sql: off
     hibernate:
       ddl-auto: update
   h2:

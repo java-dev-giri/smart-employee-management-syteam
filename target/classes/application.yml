@@ -3,6 +3,11 @@ spring:
   application:
     name: employee-management
 
+#Define logging levels as per packages
+logging:
+  level:
+    root: info
+
 #Server configs
 server:
   port: 8090
@@ -18,7 +23,7 @@ server:
 management:
   endpoint:
     shutdown:
-      #this should be added if we want to stop our application
+      #This should be added if we want to stop our application by an actuators endpoint
       access: unrestricted
   endpoints:
     web:
